@@ -10,7 +10,7 @@ const locations = require('common-locations')
 ```
 
 If you wish to use with [memfs](https://www.npmjs.com/package/memfs) or
-[unionfs](https://www.npmjs.com/package/unionfs), you can optionally pass in and
+[unionfs](https://www.npmjs.com/package/unionfs), you can optionally pass in an
 `fs` object.
 ```javascript
 const fs = require('fs')
@@ -33,6 +33,21 @@ The above will return `/home/<username>/etc/myapp`.
 
 NOTE: You will have to view the source to see the other options until the API is finalized
 and documentation is produced.
+
+- app
+    - local()
+    - system()
+    - user()
+- binaries
+    - local()
+    - system()
+    - user()
+- config
+    - local()
+    - system()
+    - user()
+- home()
+- temp()
 
 ### Future Implementations
 
