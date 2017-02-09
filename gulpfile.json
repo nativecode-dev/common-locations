@@ -11,18 +11,13 @@
     "lib": "lib"
   },
   "env": {
-    "common": {
-      "vars": {}
-    },
+    "common": {},
     "debug": {
-      "vars": {
-        "NODE_ENV": "debug"
-      }
+      "DEBUG": "common-locations",
+      "NODE_ENV": "debug"
     },
     "production": {
-      "vars": {
-        "NODE_ENV": "production"
-      }
+      "NODE_ENV": "production"
     }
   },
   "plugins": {

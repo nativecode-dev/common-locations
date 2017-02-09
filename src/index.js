@@ -1,5 +1,9 @@
+const debug = require('debug')('common-locations')
+
 const lib = (filesystem, env) => {
-  const debug = require('debug')
+  if (env) debug('using custom env')
+  if (filesystem) debug('using custom filesystem')
+
   const fs = filesystem || require('fs')
   const os = require('os')
   const merge = require('merge')
