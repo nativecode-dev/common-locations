@@ -31,6 +31,11 @@ describe('when using common-locations module', () => {
       it('should create sub-directory with additional directories', () => expect(common.home(true, 'etc', 'test')).to.be.equal(util.format('C:\\%s\\etc\\test', dir.home)))
     } else {
       const mount = volume.mountSync('/', vfs)
+
+      it('should exist', () => expect(common.home()).to.be.equal(dir.home))
+      it('should exist with additional directories', () => expect(common.home(false, 'etc')).to.be.equal(dir.etc))
+      it('should create sub-directory', () => expect(common.home(true, 'test')).to.be.equal(dir.home))
+      it('should create sub-directory with additional directories', () => expect(common.home(true, 'etc', 'test')).to.be.equal(dir.home))
     }
   })
 })
