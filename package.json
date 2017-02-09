@@ -1,0 +1,31 @@
+{
+  "author": "Mike Pham <support@nativecode.com> (https://www.mikepham.com)",
+  "description": "Library to retrieve common cross-platform locations.",
+  "license": "MIT",
+  "main": "lib/index.js",
+  "name": "common-locations",
+  "version": "0.0.1",
+  "dependencies": {},
+  "devDependencies": {
+    "babel-preset-es2015": "^6.22.0",
+    "chai": "^3.5.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-debug": "^3.0.0",
+    "gulp-load-plugins": "^1.5.0",
+    "gulp-mocha": "^3.0.1",
+    "memfs": "0.0.15",
+    "mocha": "^3.2.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.nativecode.com/repository/npm-nativecode/"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "clean": "gulp clean",
+    "package": "gulp clean && gulp build && npm publish",
+    "setup": "npm install && gulp build",
+    "test": "gulp test"
+  }
+}
