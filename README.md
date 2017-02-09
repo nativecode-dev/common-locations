@@ -14,7 +14,7 @@ If you wish to use with [memfs](https://www.npmjs.com/package/memfs) or
 `fs` object.
 ```javascript
 const fs = require('fs')
-const cl = require('common-locations)
+const cl = require('common-locations')
 const locations = cl.use(fs)
 ```
 
