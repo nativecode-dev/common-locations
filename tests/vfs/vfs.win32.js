@@ -5,7 +5,6 @@ const util = require('util')
 
 const env = process.env
 const username = os.userInfo().username
-const home = util.format('Users\\%s', username)
 const volume = new memfs.Volume()
 
 module.exports = {
