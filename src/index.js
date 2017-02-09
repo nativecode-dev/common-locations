@@ -57,28 +57,38 @@ const lib = (filesystem, env) => {
       break;
   }
 
-  const pathify = (directory, ...args) => {
-    return path.join(directory, ...args)
+  const pathify = (directory, args) => {
+    let current = directory
+    // TODO: make directories if they don't exist, one by one.
+    args.forEach(arg => {
+      current = path.join(current, arg)
+
+      if (!fs.memfs && !fs.existsSync(current)) {
+        fs.mkdirSync(current)
+      }
+    })
+
+    return current
   }
 
   return {
     app: {
-      local: (...args) => pathify(paths.app.local, ...args),
-      system: (...args) => pathify(paths.app.system, ...args),
-      user: (...args) => pathify(paths.app.user, ...args)
+      local: (...args) => pathify(paths.app.local, args),
+      system: (...args) => pathify(paths.app.system, args),
+      user: (...args) => pathify(paths.app.user, args)
     },
     binaries: {
-      local: (...args) => pathify(paths.binaries.local, ...args),
-      system: (...args) => pathify(paths.binaries.system, ...args),
-      user: (...args) => pathify(paths.binaries.user, ...args)
+      local: (...args) => pathify(paths.binaries.local, args),
+      system: (...args) => pathify(paths.binaries.system, args),
+      user: (...args) => pathify(paths.binaries.user, args)
     },
     config: {
-      local: (...args) => pathify(paths.config.local, ...args),
-      system: (...args) => pathify(paths.config.system, ...args),
-      user: (...args) => pathify(paths.config.user, ...args)
+      local: (...args) => pathify(paths.config.local, args),
+      system: (...args) => pathify(paths.config.system, args),
+      user: (...args) => pathify(paths.config.user, args)
     },
-    home: (...args) => pathify(paths.home, ...args),
-    temp: (...args) => pathify(paths.temp, ...args)
+    home: (...args) => pathify(paths.home, args),
+    temp: (...args) => pathify(paths.temp, args)
   }
 }
 
