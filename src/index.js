@@ -36,7 +36,7 @@ const lib = (filesystem, env) => {
       paths.binaries.system = envs.PROGRAMFILES
       paths.binaries.user = paths.home
       paths.config.local = envs.LOCALAPPDATA
-      paths.config.system = envs.ALLUSERPROFILE
+      paths.config.system = envs.ALLUSERSPROFILE
       paths.config.user = path.join(paths.home, 'settings')
       break;
 
