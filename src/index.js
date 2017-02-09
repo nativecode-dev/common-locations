@@ -1,9 +1,11 @@
-const lib = filesystem => {
+const lib = (filesystem, env) => {
   const debug = require('debug')
   const fs = filesystem || require('fs')
   const os = require('os')
+  const merge = require('merge')
   const path = require('path')
   const process = require('process')
+  const envs = merge.recursive(true, env || {}, process.env)
 
   let paths = {
     app: {
@@ -27,14 +29,14 @@ const lib = filesystem => {
 
   switch (os.platform()) {
     case "win32":
-      paths.app.local = process.env.LOCALAPPDATA
-      paths.app.system = process.env.PROGRAMFILES
+      paths.app.local = envs.LOCALAPPDATA
+      paths.app.system = envs.PROGRAMFILES
       paths.app.user = paths.home
-      paths.binaries.local = process.env.LOCALAPPDATA
-      paths.binaries.system = process.env.PROGRAMFILES
+      paths.binaries.local = envs.LOCALAPPDATA
+      paths.binaries.system = envs.PROGRAMFILES
       paths.binaries.user = paths.home
-      paths.config.local = process.env.LOCALAPPDATA
-      paths.config.system = process.env.ALLUSERPROFILE
+      paths.config.local = envs.LOCALAPPDATA
+      paths.config.system = envs.ALLUSERPROFILE
       paths.config.user = path.join(paths.home, 'settings')
       break;
 

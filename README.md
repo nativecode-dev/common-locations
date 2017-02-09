@@ -18,6 +18,17 @@ const cl = require('common-locations')
 const locations = cl.use(fs)
 ```
 
+You can also pass in an `env` object as well, that is merged with the `process.env`
+variables.
+```javascript
+const locations = cl.use(fs, {
+  NODE_ENV: 'debug'
+})
+```
+
+NOTE: It will mainly affect Windows as most of the directory locations are pulled
+from environment variables.
+
 Once you've required the module, you can access the various methods in the namespace.
 ```javascript
 const home = locations.home()
