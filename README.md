@@ -25,7 +25,7 @@ const home = locations.home()
 ```
 
 The above will return `/home/<username>` on POSIX systems or `C:\Users\<username>` on Windows machines.
-You can optionall pass additional directory parts as well.
+You can optionally pass additional directory parts as well.
 
 ```
 const home = locations.home('etc', 'myapp')
