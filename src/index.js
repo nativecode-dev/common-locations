@@ -1,4 +1,4 @@
-module.exports = filesystem => {
+const lib = filesystem => {
   const debug = require('debug')
   const fs = filesystem || require('fs')
   const os = require('os')
@@ -75,3 +75,6 @@ module.exports = filesystem => {
     temp: (...args) => pathify(paths.temp, ...args)
   }
 }
+
+module.exports = lib()
+module.exports.use = filesystem => lib(filesystem)

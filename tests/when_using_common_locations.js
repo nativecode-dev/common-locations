@@ -18,7 +18,7 @@ const vfs = {
 
 const volume = new memfs.Volume()
 const locations = require('../lib')
-const common = locations(volume)
+const common = locations.use(volume)
 
 describe('when using common-locations module', () => {
   describe('to access files in the user\'s home directory', () => {
