@@ -1,5 +1,6 @@
 const fs = require('fs')
 const gulp = require('gulp')
+const merge = require('merge')
 const plugins = require('gulp-load-plugins')()
 
 const config = fs.readFileSync('./gulpfile.json')
@@ -26,8 +27,11 @@ gulp.task('clean', () => {
 })
 
 gulp.task('test', ['build'], () => {
+  const env = plugins.env.set(merge.recursive(true, $.env.debug, $.env.common))
+
   return gulp.src($.sources.tests)
     .pipe(plugins.mocha($.plugins.mocha))
+    .pipe(env.reset)
 })
 
 gulp.task('default', ['build'])

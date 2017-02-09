@@ -10,6 +10,21 @@
   "destination": {
     "lib": "lib"
   },
+  "env": {
+    "common": {
+      "vars": {}
+    },
+    "debug": {
+      "vars": {
+        "NODE_ENV": "debug"
+      }
+    },
+    "production": {
+      "vars": {
+        "NODE_ENV": "production"
+      }
+    }
+  },
   "plugins": {
     "babel": {
       "presets": "es2015"
