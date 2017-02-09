@@ -51,34 +51,27 @@ module.exports = filesystem => {
       break;
   }
 
-  const pathify = (force, directory, ...args) => {
-    const dir = path.join(directory, ...args)
-    debug(dir)
-
-    if (force === true && !fs.existsSync(dir)) {
-      fs.mkdirSync(dir)
-    }
-
-    return dir
+  const pathify = (directory, ...args) => {
+    return path.join(directory, ...args)
   }
 
   return {
     app: {
-      local: (force, ...args) => pathify(force, paths.app.local, ...args),
-      system: (force, ...args) => pathify(force, paths.app.system, ...args),
-      user: (force, ...args) => pathify(force, paths.app.user, ...args)
+      local: (...args) => pathify(paths.app.local, ...args),
+      system: (...args) => pathify(paths.app.system, ...args),
+      user: (...args) => pathify(paths.app.user, ...args)
     },
     binaries: {
-      local: (force, ...args) => pathify(force, paths.binaries.local, ...args),
-      system: (force, ...args) => pathify(force, paths.binaries.system, ...args),
-      user: (force, ...args) => pathify(force, paths.binaries.user, ...args)
+      local: (...args) => pathify(paths.binaries.local, ...args),
+      system: (...args) => pathify(paths.binaries.system, ...args),
+      user: (...args) => pathify(paths.binaries.user, ...args)
     },
     config: {
-      local: (force, ...args) => pathify(force, paths.config.local, ...args),
-      system: (force, ...args) => pathify(force, paths.config.system, ...args),
-      user: (force, ...args) => pathify(force, paths.config.user, ...args)
+      local: (...args) => pathify(paths.config.local, ...args),
+      system: (...args) => pathify(paths.config.system, ...args),
+      user: (...args) => pathify(paths.config.user, ...args)
     },
-    home: (force, ...args) => pathify(force, paths.home, ...args),
-    temp: (force, ...args) => pathify(force, paths.temp, ...args)
+    home: (...args) => pathify(paths.home, ...args),
+    temp: (...args) => pathify(paths.temp, ...args)
   }
 }

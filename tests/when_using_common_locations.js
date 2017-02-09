@@ -24,18 +24,12 @@ describe('when using common-locations module', () => {
   describe('to access files in the user\'s home directory', () => {
     if (os.platform() === 'win32') {
       const mount = volume.mountSync('C:\\', vfs)
-
       it('should exist', () => expect(common.home()).to.be.equal(util.format('C:\\%s', dir.home)))
-      it('should exist with additional directories', () => expect(common.home(false, 'etc')).to.be.equal(util.format('C:\\%s', dir.etc)))
-      it('should create sub-directory', () => expect(common.home(true, 'test')).to.be.equal(util.format('C:\\%s\\test', dir.home)))
-      it('should create sub-directory with additional directories', () => expect(common.home(true, 'etc', 'test')).to.be.equal(util.format('C:\\%s\\etc\\test', dir.home)))
+      it('should exist with additional directories', () => expect(common.home('etc')).to.be.equal(util.format('C:\\%s', dir.etc)))
     } else {
       const mount = volume.mountSync('/', vfs)
-
       it('should exist', () => expect(common.home()).to.be.equal(dir.home))
-      it('should exist with additional directories', () => expect(common.home(false, 'etc')).to.be.equal(dir.etc))
-      it('should create sub-directory', () => expect(common.home(true, 'test')).to.be.equal(dir.home))
-      it('should create sub-directory with additional directories', () => expect(common.home(true, 'etc', 'test')).to.be.equal(dir.home))
+      it('should exist with additional directories', () => expect(common.home('etc')).to.be.equal(dir.etc))
     }
   })
 })
