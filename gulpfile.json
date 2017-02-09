@@ -13,6 +13,9 @@
   "plugins": {
     "babel": {
       "presets": "es2015"
+    },
+    "mocha": {
+      "reporter": "spec"
     }
   },
   "sources": {

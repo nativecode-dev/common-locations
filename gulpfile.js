@@ -25,4 +25,9 @@ gulp.task('clean', () => {
     .pipe(plugins.clean())
 })
 
+gulp.task('test', ['build'], () => {
+  return gulp.src($.sources.tests)
+    .pipe(plugins.mocha($.plugins.mocha))
+})
+
 gulp.task('default', ['build'])
