@@ -18,6 +18,24 @@ const cl = require('common-locations)
 const locations = cl.use(fs)
 ```
 
+Once you've required the module, you can access the various methods in the namespace.
+
+```
+const home = locations.home()
+```
+
+The above will return `/home/<username>` on POSIX systems or `C:\Users\<username>` on Windows machines.
+You can optionall pass additional directory parts as well.
+
+```
+const home = locations.home('etc', 'myapp')
+```
+
+The above will return `/home/<username>/etc/myapp`.
+
+NOTE: You will have to view the source to see the other options until the API is finalized and documentation
+is produced.
+
 ### Future Implementations
 
 - Allow creation of sub-directories.
