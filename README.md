@@ -66,10 +66,6 @@ and documentation is produced.
     - user()
 - temp()
 
-### Future Implementations
-
-- Allow creation of sub-directories.
-
 ## Development Setup
 ```
 npm run setup
