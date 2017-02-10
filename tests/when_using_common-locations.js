@@ -6,7 +6,7 @@ describe('when using common-locations module', () => {
   const os = require('os')
   const path = require('path')
   const util = require('util')
-  const vfs = require('./vfs')
+  const vfs = require('./vfs')('test')
 
   const username = os.userInfo().username
 

@@ -12,6 +12,20 @@ const lib = (name, filesystem, env) => {
   const process = require('process')
   const envs = merge.recursive(true, env || {}, process.env)
 
+  const pathify = (directory, ...args) => {
+    let current = directory
+    // TODO: make directories if they don't exist, one by one.
+    args.forEach(arg => {
+      current = path.join(current, arg)
+
+      if (!fs.memfs && !fs.existsSync(current)) {
+        fs.mkdirSync(current)
+      }
+    })
+
+    return current
+  }
+
   // NOTE: We use the following nomenclature to distinguish betwee the three
   // relevant locations that developers usually expect:
   // * [local]  - represents machine-specific locations
@@ -39,7 +53,7 @@ const lib = (name, filesystem, env) => {
       system: undefined,
       user: undefined
     },
-    temp: os.tmpdir()
+    temp: pathify(os.tmpdir(), name)
   }
 
   // TODO: Add support for darwin.
@@ -49,76 +63,62 @@ const lib = (name, filesystem, env) => {
       // and user because everything lives in "Program Files". We only make a
       // distinction for configuration and log data.
       const programs = envs.PROGRAMFILES || envs.ProgramFiles
-      paths.app.local = path.join(programs, name)
-      paths.app.system = path.join(programs, name)
-      paths.app.user = path.join(programs, name)
-      paths.binaries.local = path.join(programs, name)
-      paths.binaries.system = path.join(programs, name)
-      paths.binaries.user = path.join(programs, name)
-      paths.config.local = path.join(envs.APPDATA, name, 'settings')
-      paths.config.system = path.join(envs.ALLUSERSPROFILE, name, 'settings')
-      paths.config.user = path.join(envs.LOCALAPPDATA, 'settings')
-      paths.log.local = path.join(paths.app.local, 'logs')
-      paths.log.system = path.join(paths.app.system, 'logs')
-      paths.log.user = path.join(paths.app.user, 'logs')
+      paths.app.local = pathify(programs, name)
+      paths.app.system = pathify(programs, name)
+      paths.app.user = pathify(programs, name)
+      paths.binaries.local = pathify(programs, name)
+      paths.binaries.system = pathify(programs, name)
+      paths.binaries.user = pathify(programs, name)
+      paths.config.local = pathify(envs.APPDATA, name, 'settings')
+      paths.config.system = pathify(envs.ALLUSERSPROFILE, name, 'settings')
+      paths.config.user = pathify(envs.LOCALAPPDATA, 'settings')
+      paths.log.local = pathify(paths.app.local, 'logs')
+      paths.log.system = pathify(paths.app.system, 'logs')
+      paths.log.user = pathify(paths.app.user, 'logs')
       break;
 
     default:
       // NOTE: We prefer to use the FHS (http://www.pathname.com/fhs/pub/fhs-2.3.html)
       // locations for applications and data.
       // TODO: Should we also support BSD-type locations, like /usr/local?
-      paths.app.local = path.join('/opt', name)
-      paths.app.system = path.join('/opt', name)
-      paths.app.user = path.join(paths.home, name)
+      paths.app.local = pathify('/opt', name)
+      paths.app.system = pathify('/opt', name)
+      paths.app.user = pathify(paths.home, name)
       paths.binaries.local = '/opt/local/bin'
       paths.binaries.system = '/bin'
       paths.binaries.user = '/usr/local/bin'
-      paths.config.local = path.join('/etc', name)
-      paths.config.system = path.join('/etc', name)
-      paths.config.user = path.join(paths.home, 'etc', name)
-      paths.log.local = path.join('/var/opt', name, 'logs')
-      paths.log.system = path.join('/var/opt', name, 'logs')
-      paths.log.user = path.join('/var/opt', name, 'logs')
+      paths.config.local = pathify('/etc', name)
+      paths.config.system = pathify('/etc', name)
+      paths.config.user = pathify(paths.home, 'etc', name)
+      paths.log.local = pathify('/var/opt', name, 'logs')
+      paths.log.system = pathify('/var/opt', name, 'logs')
+      paths.log.user = pathify('/var/opt', name, 'logs')
       break;
-  }
-
-  const pathify = (directory, args) => {
-    let current = directory
-    // TODO: make directories if they don't exist, one by one.
-    args.forEach(arg => {
-      current = path.join(current, arg)
-
-      if (!fs.memfs && !fs.existsSync(current)) {
-        fs.mkdirSync(current)
-      }
-    })
-
-    return current
   }
 
   return {
     app: {
-      local: (...args) => pathify(paths.app.local, args),
-      system: (...args) => pathify(paths.app.system, args),
-      user: (...args) => pathify(paths.app.user, args)
+      local: (...args) => pathify(paths.app.local, ...args),
+      system: (...args) => pathify(paths.app.system, ...args),
+      user: (...args) => pathify(paths.app.user, ...args)
     },
     binaries: {
-      local: (...args) => pathify(paths.binaries.local, args),
-      system: (...args) => pathify(paths.binaries.system, args),
-      user: (...args) => pathify(paths.binaries.user, args)
+      local: (...args) => pathify(paths.binaries.local, ...args),
+      system: (...args) => pathify(paths.binaries.system, ...args),
+      user: (...args) => pathify(paths.binaries.user, ...args)
     },
     config: {
-      local: (...args) => pathify(paths.config.local, args),
-      system: (...args) => pathify(paths.config.system, args),
-      user: (...args) => pathify(paths.config.user, args)
+      local: (...args) => pathify(paths.config.local, ...args),
+      system: (...args) => pathify(paths.config.system, ...args),
+      user: (...args) => pathify(paths.config.user, ...args)
     },
-    home: (...args) => pathify(paths.home, args),
+    home: (...args) => pathify(paths.home, ...args),
     log: {
-      local: (...args) => pathify(paths.log.local, args),
-      system: (...args) => pathify(paths.log.system, args),
-      user: (...args) => pathify(paths.log.user, args)
+      local: (...args) => pathify(paths.log.local, ...args),
+      system: (...args) => pathify(paths.log.system, ...args),
+      user: (...args) => pathify(paths.log.user, ...args)
     },
-    temp: (...args) => pathify(paths.temp, args)
+    temp: (...args) => pathify(paths.temp, ...args)
   }
 }
 
