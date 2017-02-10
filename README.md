@@ -66,6 +66,9 @@ and documentation is produced.
     - user()
 - temp()
 
+### TODO
+- Implement some sort of mkdir when grabbing paths.
+
 ## Development Setup
 ```
 npm install

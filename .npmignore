@@ -2,6 +2,7 @@
 src/
 tests/
 
+.editorconfig
 .jsbeautifyrc
 .npmignore
 .npmrc

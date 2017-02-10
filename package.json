@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
@@ -34,7 +34,7 @@
     "settings"
   ],
   "publishConfig": {
-    "registry": "https://npm.nativecode.com/repository/npm-nativecode/"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
