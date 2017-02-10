@@ -30,6 +30,7 @@
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
+    "env": "node tests/env.js",
     "package": "gulp clean && gulp build && npm publish",
     "setup": "npm install && gulp build",
     "test": "gulp clean && gulp build && gulp test"

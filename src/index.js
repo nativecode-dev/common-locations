@@ -67,18 +67,18 @@ const lib = (name, filesystem, env) => {
       // NOTE: We prefer to use the FHS (http://www.pathname.com/fhs/pub/fhs-2.3.html)
       // locations for applications and data.
       // TODO: Should we also support BSD-type locations, like /usr/local?
-      paths.app.local = '/opt'
-      paths.app.system = '/opt'
-      paths.app.user = paths.home
+      paths.app.local = path.join('/opt', name)
+      paths.app.system = path.join('/opt', name)
+      paths.app.user = path.join(paths.home, name)
       paths.binaries.local = '/opt/local/bin'
       paths.binaries.system = '/bin'
       paths.binaries.user = '/usr/local/bin'
-      paths.config.local = '/etc'
-      paths.config.system = '/etc'
-      paths.config.user = path.join(paths.home, 'etc')
-      paths.log.local = path.join(paths.app.local, 'logs')
-      paths.log.system = path.join('/var/opt', name)
-      paths.log.user = path.join(paths.app.user, name, 'logs')
+      paths.config.local = path.join('/etc', name)
+      paths.config.system = path.join('/etc', name)
+      paths.config.user = path.join(paths.home, 'etc', name)
+      paths.log.local = path.join('/var/opt', name, 'logs')
+      paths.log.system = path.join('/var/opt', name, 'logs')
+      paths.log.user = path.join('/var/opt', name, 'logs')
       break;
   }
 
@@ -122,5 +122,5 @@ const lib = (name, filesystem, env) => {
   }
 }
 
-module.exports = lib
+module.exports = name => lib(name)
 module.exports.use = (name, filesystem, env) => lib(name, filesystem, env)

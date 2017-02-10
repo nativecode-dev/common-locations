@@ -4,9 +4,11 @@ Node module that provides access to common locations across platforms.
 
 ## Usage
 
-The default usage of the library can be invoked by just requiring the package.
+The default usage of the library can be invoked by just requiring the package
+and passing the name of your application.
 ```javascript
-const locations = require('common-locations')
+const cl = require('common-locations')
+const locations = cl('myapp')
 ```
 
 If you wish to use with [memfs](https://www.npmjs.com/package/memfs) or
@@ -15,13 +17,13 @@ If you wish to use with [memfs](https://www.npmjs.com/package/memfs) or
 ```javascript
 const fs = require('fs')
 const cl = require('common-locations')
-const locations = cl.use(fs)
+const locations = cl.use('myapp', fs)
 ```
 
 You can also pass in an `env` object as well, that is merged with the `process.env`
 variables.
 ```javascript
-const locations = cl.use(fs, {
+const locations = cl.use('myapp', fs, {
   NODE_ENV: 'debug'
 })
 ```
