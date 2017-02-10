@@ -6,14 +6,14 @@ describe('when using common-locations module', () => {
   const os = require('os')
   const path = require('path')
   const util = require('util')
-  const vfs = require('./vfs')('test')
+  const vfs = require('./vfs')('common-locations')
 
   const username = os.userInfo().username
 
   const dir = {
     config: {
       local: os.platform() === 'win32' ?
-        util.format('Users\\%s\\AppData\\Roaming\\%s\\config', username, 'test') : util.format('/etc/%s', 'test')
+        util.format('Users\\%s\\AppData\\Roaming\\%s\\config', username, 'common-locations') : util.format('/etc/%s', 'common-locations')
     },
     etc: os.platform() === 'win32' ?
       util.format('Users\\%s\\etc', username) : util.format('/home/%s/etc', username),
@@ -22,14 +22,13 @@ describe('when using common-locations module', () => {
   }
 
   const locations = require('../lib')
-  const common = locations.use('test', vfs.volume)
+  const common = locations.use('common-locations', vfs.volume)
 
   describe('to access files in the user\'s home directory', () => {
     if (os.platform() === 'win32') {
 
       it('should exist', () => expect(common.home())
         .to.equal(path.join('C:\\', dir.home)))
-
       it('should exist with additional parts', () => expect(common.home('etc', 'test'))
         .to.equal(path.join('C:\\', dir.etc, 'test')))
 
@@ -37,7 +36,6 @@ describe('when using common-locations module', () => {
 
       it('should exist', () => expect(common.home())
         .to.equal(dir.home))
-
       it('should exist with additional parts', () => expect(common.home('etc', 'test'))
         .to.equal(path.join(dir.etc, 'test')))
 
@@ -51,10 +49,16 @@ describe('when using common-locations module', () => {
       it('should exist', () => expect(common.config.local())
         .to.equal(path.join('C:\\', dir.config.local)))
 
+      it('should exist with additional parts', () => expect(common.config.local('test'))
+        .to.equal(path.join('C:\\', dir.config.local, 'test')))
+
     } else {
 
       it('should exist', () => expect(common.config.local())
         .to.equal(dir.config.local))
+
+      it('should exist with additional parts', () => expect(common.config.local('test'))
+        .to.equal(path.join(dir.config.local, 'test')))
 
     }
 
