@@ -13,7 +13,7 @@ describe('when using common-locations module', () => {
   const dir = {
     config: {
       local: os.platform() === 'win32' ?
-        util.format('Users\\%s\\AppData\\Roaming\\%s\\config', username, 'common-locations') : util.format('/etc/%s', 'common-locations')
+        util.format('Users\\%s\\AppData\\Local\\%s\\config', username, 'common-locations') : util.format('/etc/%s', 'common-locations')
     },
     etc: os.platform() === 'win32' ?
       util.format('Users\\%s\\etc', username) : util.format('/home/%s/etc', username),
