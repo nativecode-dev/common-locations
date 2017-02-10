@@ -11,6 +11,10 @@ describe('when using common-locations module', () => {
   const username = os.userInfo().username
 
   const dir = {
+    config: {
+      local: os.platform() === 'win32' ?
+        util.format('Users\\%s\\AppData\\Roaming\\%s\\config', username, 'test') : util.format('/etc/%s', 'test')
+    },
     etc: os.platform() === 'win32' ?
       util.format('Users\\%s\\etc', username) : util.format('/home/%s/etc', username),
     home: os.platform() === 'win32' ?
@@ -24,19 +28,35 @@ describe('when using common-locations module', () => {
     if (os.platform() === 'win32') {
 
       it('should exist', () => expect(common.home())
-        .to.be.equal(path.join('C:\\', dir.home)))
+        .to.equal(path.join('C:\\', dir.home)))
 
       it('should exist with additional parts', () => expect(common.home('etc', 'test'))
-        .to.be.equal(path.join('C:\\', dir.etc, 'test')))
+        .to.equal(path.join('C:\\', dir.etc, 'test')))
 
     } else {
 
       it('should exist', () => expect(common.home())
-        .to.be.equal(dir.home))
+        .to.equal(dir.home))
 
       it('should exist with additional parts', () => expect(common.home('etc', 'test'))
-        .to.be.equal(path.join(dir.etc, 'test')))
+        .to.equal(path.join(dir.etc, 'test')))
 
     }
+  })
+
+  describe('to access configuration files', () => {
+
+    if (os.platform() === 'win32') {
+
+      it('should exist', () => expect(common.config.local())
+        .to.equal(path.join('C:\\', dir.config.local)))
+
+    } else {
+
+      it('should exist', () => expect(common.config.local())
+        .to.equal(dir.config.local))
+
+    }
+
   })
 })
