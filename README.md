@@ -60,6 +60,10 @@ and documentation is produced.
     - system()
     - user()
 - home()
+- log
+    - local()
+    - system()
+    - user()
 - temp()
 
 ### Future Implementations
