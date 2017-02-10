@@ -31,6 +31,6 @@
   "sources": {
     "js": ["src/**/*.js"],
     "json": ["src/**/*.json"],
-    "tests": ["tests/**/*.js"]
+    "tests": ["tests/**/when_*.js"]
   }
 }
