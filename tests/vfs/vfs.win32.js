@@ -1,20 +1,30 @@
 const memfs = require('memfs')
 const os = require('os')
 const process = require('process')
-const util = require('util')
 
 const env = process.env
 const username = os.userInfo().username
 const volume = new memfs.Volume()
 
-module.exports = {
-  mount: volume.mountSync('C:\\', {
-    [os.homedir()]: undefined,
-    [env.ALLUSERSPROFILE]: undefined,
-    [env.APPDATA]: undefined,
-    [env.LOCALAPPDATA]: undefined,
-    [env.PROGRAMFILES]: undefined,
-    [env.CommonProgramFiles]: undefined
-  }),
-  volume: volume
+const vfs = {
+  [os.homedir()]: undefined,
+  [env.ALLUSERSPROFILE]: undefined,
+  [env.APPDATA]: undefined,
+  [env.LOCALAPPDATA]: undefined,
+  [env.PROGRAMFIELS || env.ProgramFiles]: undefined,
+  [env.CommonProgramFiles]: undefined
+}
+
+module.exports = name => {
+  const path = require('path')
+
+  Object.keys(vfs).forEach(key => {
+    const location = path.join(key, name)
+    vfs[location] = undefined
+  })
+
+  return {
+    mount: volume.mountSync('C:\\', vfs),
+    volume: volume
+  }
 }
