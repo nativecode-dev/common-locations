@@ -58,15 +58,19 @@ module.exports = (name, filesystem, env) => {
       paths.app.local = pathify(programs, name)
       paths.app.system = pathify(programs, name)
       paths.app.user = pathify(programs, name)
+
       paths.binaries.local = pathify(programs, name)
       paths.binaries.system = pathify(programs, name)
       paths.binaries.user = pathify(programs, name)
-      paths.config.local = pathify(envs.APPDATA, name, 'config')
+
+      paths.config.local = pathify(envs.LOCALAPPDATA, name, 'config')
       paths.config.system = pathify(envs.ALLUSERSPROFILE, name, 'config')
-      paths.config.user = pathify(envs.LOCALAPPDATA, 'config')
+      paths.config.user = pathify(envs.APPDATA, 'config')
+
       paths.lib.local = pathify(programs, name, 'lib')
       paths.lib.system = pathify(programs, name, 'lib')
       paths.lib.user = pathify(programs, name, 'lib')
+
       paths.log.local = pathify(paths.app.local, 'logs')
       paths.log.system = pathify(paths.app.system, 'logs')
       paths.log.user = pathify(paths.app.user, 'logs')
@@ -79,15 +83,19 @@ module.exports = (name, filesystem, env) => {
       paths.app.local = pathify('/opt', name)
       paths.app.system = pathify('/opt', name)
       paths.app.user = pathify(paths.home, name)
+
       paths.binaries.local = '/opt/local/bin'
       paths.binaries.system = '/bin'
       paths.binaries.user = '/usr/bin'
+
       paths.config.local = pathify('/etc', name)
       paths.config.system = pathify('/etc', name)
       paths.config.user = pathify(paths.home, '.config', name)
+
       paths.lib.local = '/usr/lib'
       paths.lib.system = '/lib'
       paths.lib.user = '/usr/lib'
+
       paths.log.local = pathify('/var/local', name, 'log')
       paths.log.system = pathify('/var', name, 'log')
       paths.log.user = pathify('/var/opt', name, 'log')
