@@ -74,3 +74,9 @@ and documentation is produced.
 ```
 npm run setup
 ```
+
+NOTE: If you are using an editor and would like to run `gulp` commands in your IDE,
+you'll need to also install `gulp-cli` globally.
+```
+npm install -g gulp-cli
+```

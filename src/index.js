@@ -1,3 +1,4 @@
-const lib = require('./locations')
-module.exports = name => lib(name)
-module.exports.use = (name, filesystem, env) => lib(name, filesystem, env)
+const locations = require('./locations')
+
+module.exports = name => locations(name)
+module.exports.use = (name, filesystem, env) => locations(name, filesystem, env)
