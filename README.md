@@ -68,7 +68,7 @@ and documentation is produced.
 
 ## Development Setup
 ```
-npm run setup
+npm install
 ```
 
 NOTE: If you are using an editor and would like to run `gulp` commands in your IDE,

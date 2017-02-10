@@ -5,6 +5,10 @@
   "main": "lib/index.js",
   "name": "common-locations",
   "version": "0.0.1",
+  "bugs": {
+    "email": "support@nativecode.com",
+    "url": "https://github.com/nativecode-dev/common-locations/issues"
+  },
   "dependencies": {
     "merge": "^1.2.0"
   },
@@ -24,15 +28,25 @@
     "merge": "^1.2.0",
     "mocha": "^3.2.0"
   },
+  "keywords": [
+    "configuration",
+    "locations",
+    "paths",
+    "settings"
+  ],
   "publishConfig": {
     "registry": "https://npm.nativecode.com/repository/npm-nativecode/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nativecode-dev/common-locations"
   },
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
-    "env": "node tests/env.js",
-    "package": "gulp clean && gulp build && npm publish",
-    "setup": "npm install && gulp build",
-    "test": "gulp clean && gulp build && gulp test"
+    "postinstall": "gulp build",
+    "prepublish": "gulp clean && gulp test",
+    "pretest": "gulp clean",
+    "test": "gulp test"
   }
 }
