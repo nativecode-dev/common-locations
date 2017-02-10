@@ -18,7 +18,7 @@ describe('when using common-locations module', () => {
   }
 
   const locations = require('../lib')
-  const common = locations.use(vfs.volume)
+  const common = locations.use('test', vfs.volume)
 
   describe('to access files in the user\'s home directory', () => {
     if (os.platform() === 'win32') {

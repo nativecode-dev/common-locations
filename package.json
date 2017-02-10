@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "0.1.0",
+  "version": "0.0.1",
   "dependencies": {
     "merge": "^1.2.0"
   },
