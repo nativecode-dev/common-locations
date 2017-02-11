@@ -4,7 +4,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
