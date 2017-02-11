@@ -18,7 +18,7 @@ module.exports = name => {
     config: {
       local: util.format('/etc/%s', name),
       system: util.format('/etc/%s', name),
-      user: util.format('/home/%s/%s', username, name)
+      user: util.format('/home/%s/.config/%s', username, name)
     },
     home: util.format('/home/%s', username),
     lib: {
@@ -31,6 +31,6 @@ module.exports = name => {
       system: util.format('/var/%s/log', name),
       user: util.format('/var/opt/%s/log', name)
     },
-    temp: '/tmp'
+    temp: util.format('/tmp/%s', name)
   }
 }
