@@ -50,6 +50,28 @@ module.exports = (name, filesystem, env) => {
 
   // TODO: Add support for darwin.
   switch (os.platform()) {
+    case 'darwin':
+      paths.app.local = pathify('/opt', name)
+      paths.app.system = pathify('/opt', name)
+      paths.app.user = pathify(paths.home, name)
+
+      paths.binaries.local = '/opt/local/bin'
+      paths.binaries.system = '/bin'
+      paths.binaries.user = '/usr/bin'
+
+      paths.config.local = pathify('/etc', name)
+      paths.config.system = pathify('/etc', name)
+      paths.config.user = pathify(paths.home, '.config', name)
+
+      paths.lib.local = '/usr/lib'
+      paths.lib.system = '/lib'
+      paths.lib.user = '/usr/lib'
+
+      paths.log.local = pathify('/var/local', name, 'log')
+      paths.log.system = pathify('/var', name, 'log')
+      paths.log.user = pathify('/var/opt', name, 'log')
+      break;
+
     case "win32":
       // NOTE: On Windows, there's almost no difference between local, system,
       // and user because everything lives in "Program Files". We only make a
