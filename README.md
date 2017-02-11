@@ -68,6 +68,7 @@ and documentation is produced.
 
 ### TODO
 - Implement some sort of mkdir when grabbing paths.
+- Implement Mac OSX paths, which currently uses the same as POSIX paths.
 
 ## Development Setup
 ```
