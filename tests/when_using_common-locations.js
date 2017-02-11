@@ -2,65 +2,62 @@ const expect = require('chai').expect
 const mocha = require('mocha')
 
 describe('when using common-locations module', () => {
-  const memfs = require('memfs')
-  const os = require('os')
-  const path = require('path')
-  const util = require('util')
-  const vfs = require('./vfs')('common-locations')
-
-  const username = os.userInfo().username
-
-  const dir = {
-    config: {
-      local: os.platform() === 'win32' ?
-        util.format('Users\\%s\\AppData\\Local\\%s\\config', username, 'common-locations') : util.format('/etc/%s', 'common-locations')
-    },
-    etc: os.platform() === 'win32' ?
-      util.format('Users\\%s\\etc', username) : util.format('/home/%s/etc', username),
-    home: os.platform() === 'win32' ?
-      util.format('Users\\%s', username) : util.format('/home/%s', username)
-  }
+  const appname = 'common-locations'
+  const platform = require('./platforms')(appname)
+  const vfs = require('./vfs')(appname)
 
   const locations = require('../lib')
-  const common = locations.use('common-locations', vfs.volume)
+  const common = locations.use(appname, vfs.volume)
 
-  describe('to access files in the user\'s home directory', () => {
-    if (os.platform() === 'win32') {
+  it('should match local program storage', () => expect(common.app.local())
+    .equal(platform.app.local))
 
-      it('should exist', () => expect(common.home())
-        .to.equal(path.join('C:\\', dir.home)))
-      it('should exist with additional parts', () => expect(common.home('etc', 'test'))
-        .to.equal(path.join('C:\\', dir.etc, 'test')))
+  it('should match system program storage', () => expect(common.app.system())
+    .equal(platform.app.system))
 
-    } else {
+  it('should match user\'s program storage', () => expect(common.app.user())
+    .equal(platform.app.user))
 
-      it('should exist', () => expect(common.home())
-        .to.equal(dir.home))
-      it('should exist with additional parts', () => expect(common.home('etc', 'test'))
-        .to.equal(path.join(dir.etc, 'test')))
+  it('should match local binaries storage', () => expect(common.binaries.local())
+    .equal(platform.binaries.local))
 
-    }
-  })
+  it('should match system binaries storage', () => expect(common.binaries.system())
+    .equal(platform.binaries.system))
 
-  describe('to access configuration files', () => {
+  it('should match user\'s binaries storage', () => expect(common.binaries.user())
+    .equal(platform.binaries.user))
 
-    if (os.platform() === 'win32') {
+  it('should match local config', () => expect(common.config.local())
+    .equal(platform.config.local))
 
-      it('should exist', () => expect(common.config.local())
-        .to.equal(path.join('C:\\', dir.config.local)))
+  it('should match system config', () => expect(common.config.system())
+    .equal(platform.config.system))
 
-      it('should exist with additional parts', () => expect(common.config.local('test'))
-        .to.equal(path.join('C:\\', dir.config.local, 'test')))
+  it('should match user\'s config', () => expect(common.config.user())
+    .equal(platform.config.user))
 
-    } else {
+  it('should match user\'s home', () => expect(common.home())
+    .equal(platform.home))
 
-      it('should exist', () => expect(common.config.local())
-        .to.equal(dir.config.local))
+  it('should match local lib storage', () => expect(common.lib.local())
+    .equal(platform.lib.local))
 
-      it('should exist with additional parts', () => expect(common.config.local('test'))
-        .to.equal(path.join(dir.config.local, 'test')))
+  it('should match system lib storage', () => expect(common.lib.system())
+    .equal(platform.lib.system))
 
-    }
+  it('should match user\'s lib storage', () => expect(common.lib.user())
+    .equal(platform.lib.user))
 
-  })
+  it('should match local log storage', () => expect(common.log.local())
+    .equal(platform.log.local))
+
+  it('should match system log storage', () => expect(common.log.system())
+    .equal(platform.log.system))
+
+  it('should match user\'s log storage', () => expect(common.log.user())
+    .equal(platform.log.user))
+
+  it('should match temp storage', () => expect(common.temp())
+    .equal(platform.temp))
+
 })

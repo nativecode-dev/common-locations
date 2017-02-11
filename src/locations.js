@@ -65,15 +65,15 @@ module.exports = (name, filesystem, env) => {
 
       paths.config.local = pathify(envs.LOCALAPPDATA, name, 'config')
       paths.config.system = pathify(envs.ALLUSERSPROFILE, name, 'config')
-      paths.config.user = pathify(envs.APPDATA, 'config')
+      paths.config.user = pathify(envs.APPDATA, name, 'config')
 
       paths.lib.local = pathify(programs, name, 'lib')
       paths.lib.system = pathify(programs, name, 'lib')
       paths.lib.user = pathify(programs, name, 'lib')
 
-      paths.log.local = pathify(paths.app.local, 'logs')
-      paths.log.system = pathify(paths.app.system, 'logs')
-      paths.log.user = pathify(paths.app.user, 'logs')
+      paths.log.local = pathify(envs.LOCALAPPDATA, name, 'logs')
+      paths.log.system = pathify(envs.ALLUSERSPROFILE, name, 'logs')
+      paths.log.user = pathify(envs.APPDATA, name, 'logs')
       break;
 
     default:
