@@ -2,6 +2,16 @@
 
 Node module that provides access to common locations across platforms.
 
+[![TeamCity (simple build status)](https://img.shields.io/teamcity/http/teamcity.jetbrains.com/s/bt345.svg?style=flat-square)](https://build.nativecode.com/viewType.html?buildTypeId=nativecode_opensource_CommonLocations_continuous)
+[![npm](https://img.shields.io/npm/dt/express.svg?style=flat-square)](https://www.npmjs.com/package/common-locations)
+[![npm](https://img.shields.io/npm/v/npm.svg?style=flat-square)](https://www.npmjs.com/package/common-locations)
+[![npm](https://img.shields.io/npm/l/express.svg?style=flat-square)](https://www.npmjs.com/package/common-locations)
+
+## Installation
+```
+npm install --save common-locations
+```
+
 ## Usage
 
 The default usage of the library can be invoked by just requiring the package
