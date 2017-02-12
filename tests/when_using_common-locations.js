@@ -7,7 +7,7 @@ describe('when using common-locations module', () => {
   const vfs = require('./vfs')(appname)
 
   const locations = require('../lib')
-  const common = locations.use(appname, vfs.volume)
+  const common = locations.use(appname, vfs)
 
   it('should match local program storage', () => expect(common.app.local())
     .equal(platform.app.local))

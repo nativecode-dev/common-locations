@@ -23,8 +23,6 @@ module.exports = name => {
     vfs[location] = undefined
   })
 
-  return {
-    mount: volume.mountSync('C:\\', vfs),
-    volume: volume
-  }
+  volume.mountSync('C:\\', vfs)
+  return volume
 }
