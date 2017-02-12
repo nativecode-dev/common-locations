@@ -11,7 +11,7 @@ const vfs = {
   [env.ALLUSERSPROFILE]: undefined,
   [env.APPDATA]: undefined,
   [env.LOCALAPPDATA]: undefined,
-  [env.PROGRAMFIELS || env.ProgramFiles]: undefined,
+  [(env.PROGRAMFILES || env.ProgramFiles)]: undefined,
   [env.CommonProgramFiles]: undefined
 }
 
@@ -23,6 +23,6 @@ module.exports = name => {
     vfs[location] = undefined
   })
 
-  volume.mountSync('C:\\', vfs)
+  volume.mountSync('.', vfs)
   return volume
 }
