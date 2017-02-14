@@ -80,9 +80,9 @@ module.exports = (name, filesystem, env) => {
       paths.app.system = pathify(envs.ALLUSERSPROFILE, name)
       paths.app.user = pathify(envs.APPDATA, name)
 
-      paths.binaries.local = pathify(envs.LOCALAPPDATA, name)
-      paths.binaries.system = pathify(envs.ALLUSERSPROFILE, name)
-      paths.binaries.user = pathify(envs.APPDATA, name)
+      paths.binaries.local = pathify(envs.LOCALAPPDATA, name, 'bin')
+      paths.binaries.system = pathify(envs.ALLUSERSPROFILE, name, 'bin')
+      paths.binaries.user = pathify(envs.APPDATA, name, 'bin')
 
       paths.config.local = pathify(envs.LOCALAPPDATA, name, 'config')
       paths.config.system = pathify(envs.ALLUSERSPROFILE, name, 'config')
