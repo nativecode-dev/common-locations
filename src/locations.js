@@ -76,22 +76,21 @@ module.exports = (name, filesystem, env) => {
       // NOTE: On Windows, there's almost no difference between local, system,
       // and user because everything lives in "Program Files". We only make a
       // distinction for configuration and log data.
-      const programs = envs.PROGRAMFILES || envs.ProgramFiles
-      paths.app.local = pathify(programs, name)
-      paths.app.system = pathify(programs, name)
-      paths.app.user = pathify(programs, name)
+      paths.app.local = pathify(envs.LOCALAPPDATA, name)
+      paths.app.system = pathify(envs.ALLUSERSPROFILE, name)
+      paths.app.user = pathify(envs.APPDATA, name)
 
-      paths.binaries.local = pathify(programs, name)
-      paths.binaries.system = pathify(programs, name)
-      paths.binaries.user = pathify(programs, name)
+      paths.binaries.local = pathify(envs.LOCALAPPDATA, name)
+      paths.binaries.system = pathify(envs.ALLUSERSPROFILE, name)
+      paths.binaries.user = pathify(envs.APPDATA, name)
 
       paths.config.local = pathify(envs.LOCALAPPDATA, name, 'config')
       paths.config.system = pathify(envs.ALLUSERSPROFILE, name, 'config')
       paths.config.user = pathify(envs.APPDATA, name, 'config')
 
-      paths.lib.local = pathify(programs, name, 'lib')
-      paths.lib.system = pathify(programs, name, 'lib')
-      paths.lib.user = pathify(programs, name, 'lib')
+      paths.lib.local = pathify(envs.LOCALAPPDATA, name, 'lib')
+      paths.lib.system = pathify(envs.ALLUSERSPROFILE, name, 'lib')
+      paths.lib.user = pathify(envs.APPDATA, name, 'lib')
 
       paths.log.local = pathify(envs.LOCALAPPDATA, name, 'logs')
       paths.log.system = pathify(envs.ALLUSERSPROFILE, name, 'logs')
