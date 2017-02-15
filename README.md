@@ -1,7 +1,7 @@
 # common-locations
 
 [![npm](https://img.shields.io/npm/v/common-locations.svg?style=flat-square)](https://www.npmjs.com/package/common-locations)
-[![TeamCity](https://img.shields.io/teamcity/https/build.nativecode.com/s/nativecode_opensource_CommonLocations_continuous.svg?style=flat-square)](https://build.nativecode.com/viewType.html?buildTypeId=nativecode_opensource_CommonLocations_continuous&guest=1)
+[![TeamCity](https://img.shields.io/teamcity/https/build.nativecode.com/s/commonlocations_continuous.svg?style=flat-square)](https://build.nativecode.com/viewType.html?buildTypeId=commonlocations_continuous&guest=1)
 
 Node module that provides access to common locations across platforms.
 
