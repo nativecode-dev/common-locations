@@ -1,10 +1,11 @@
 {
   "author": "Mike Pham <support@nativecode.com> (https://www.mikepham.com)",
   "description": "Library to retrieve common cross-platform locations.",
+  "homepage": "https://github.com/nativecode-dev/common-locations",
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.1.2",
+  "version": "2.1.3",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
@@ -38,7 +39,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/nativecode-dev/common-locations"
+    "url": "https://github.com/nativecode-dev/common-locations.git"
   },
   "scripts": {
     "build": "gulp build",
