@@ -2,15 +2,17 @@
 
 [![npm](https://img.shields.io/npm/v/common-locations.svg?style=flat-square)](https://www.npmjs.com/package/common-locations)
 [![TeamCity](https://img.shields.io/teamcity/https/build.nativecode.com/s/commonlocations_continuous.svg?style=flat-square)](https://build.nativecode.com/viewType.html?buildTypeId=commonlocations_continuous&guest=1)
+[![David](https://img.shields.io/david/nativecode-dev/common-locations.svg?style=flat-square&label=deps)](https://www.npmjs.com/package/common-locations)
+[![David](https://img.shields.io/david/dev/nativecode-dev/common-locations.svg?style=flat-square&label=devdeps)](https://www.npmjs.com/package/common-locations)
 
 Node module that provides access to common locations across platforms.
 
-## Installation
+# Installation
 ```
 npm install --save common-locations
 ```
 
-## Usage
+# Usage
 
 The default usage of the library can be invoked by just requiring the package
 and passing the name of your application.
@@ -74,11 +76,11 @@ and documentation is produced.
     - user()
 - temp()
 
-### TODO
+## TODO
 - Implement some sort of mkdir when grabbing paths.
 - Implement Mac OSX paths, which currently uses the same as POSIX paths.
 
-## Development Setup
+# Development Setup
 ```
 npm install
 ```
@@ -88,3 +90,12 @@ you'll need to also install `gulp-cli` globally.
 ```
 npm install -g gulp-cli
 ```
+
+# License
+Copyright 2017 NativeCode Development <support@nativecode.com>
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
