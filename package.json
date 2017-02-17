@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.1.4",
+  "version": "2.2.0",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
@@ -27,6 +27,9 @@
     "gulp-mustache": "^2.3.0",
     "memfs": "0.0.15",
     "mocha": "^3.2.0"
+  },
+  "engines": {
+    "node": ">= 6.0.0"
   },
   "keywords": [
     "configuration",

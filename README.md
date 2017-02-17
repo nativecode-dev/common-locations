@@ -7,6 +7,8 @@
 [![David](https://img.shields.io/david/dev/nativecode-dev/common-locations.svg?style=flat-square&label=devdeps)](https://www.npmjs.com/package/common-locations)
 
 Node module that provides access to common locations across platforms.
+NOTE: Due to not using a polyfill, this library only works on node 6.x and above. There is a TODO to provide
+an implementation across platforms that is more reliable than current packages.
 
 # Installation
 ```
@@ -78,7 +80,8 @@ and documentation is produced.
 - temp()
 
 ## TODO
-- Implement some sort of mkdir when grabbing paths.
+- Implement polyfill for `os.userInfo`.
+- Implement some sort of `mkdir` when grabbing paths.
 - Implement Mac OSX paths, which currently uses the same as POSIX paths.
 
 # Development Setup
