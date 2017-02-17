@@ -2,6 +2,7 @@
 src/
 tests/
 
+*.tgz
 .editorconfig
 .jsbeautifyrc
 .npmignore
