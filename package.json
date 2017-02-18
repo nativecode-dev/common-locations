@@ -5,13 +5,13 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
   },
   "dependencies": {
-    "common-userinfo": "^1.0.0",
+    "common-userinfo": "^1.0.2",
     "debug": "^2.6.0",
     "merge": "^1.2.0"
   },
