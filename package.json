@@ -2,6 +2,7 @@
   "author": "Mike Pham <support@nativecode.com> (https://www.mikepham.com)",
   "description": "Library to retrieve common cross-platform locations.",
   "homepage": "https://github.com/nativecode-dev/common-locations",
+  "keywords": ["configuration", "locations", "paths", "settings"],
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
@@ -32,12 +33,6 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "keywords": [
-    "configuration",
-    "locations",
-    "paths",
-    "settings"
-  ],
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
