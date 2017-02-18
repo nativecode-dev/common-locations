@@ -1,12 +1,12 @@
 {
-  "author": "Mike Pham <support@nativecode.com> (https://www.mikepham.com)",
+  "author": "NativeCode Development <support@nativecode.com> (https://www.nativecode.com)",
   "description": "Library to retrieve common cross-platform locations.",
   "homepage": "https://github.com/nativecode-dev/common-locations",
   "keywords": ["configuration", "locations", "paths", "settings"],
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
