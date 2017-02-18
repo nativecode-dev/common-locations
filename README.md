@@ -80,7 +80,7 @@ and documentation is produced.
 - temp()
 
 ## TODO
-- Implement polyfill for `os.userInfo`.
+- ~~Implement polyfill for `os.userInfo`.~~ [common-userinfo](https://www.npmjs.com/package/common-userinfo)
 - Implement some sort of `mkdir` when grabbing paths.
 - Implement Mac OSX paths, which currently uses the same as POSIX paths.
 
