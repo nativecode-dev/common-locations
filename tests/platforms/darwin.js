@@ -1,3 +1,4 @@
+const path = require('path')
 const userinfo = require('common-userinfo')
 const util = require('util')
 
@@ -8,7 +9,7 @@ module.exports = name => {
     app: {
       local: util.format('/opt/%s', name),
       system: util.format('/opt/%s', name),
-      user: util.format('/home/%s/%s', username, name)
+      user: util.format('/Users/%s/%s', username, name)
     },
     binaries: {
       local: '/opt/local/bin',
@@ -18,9 +19,9 @@ module.exports = name => {
     config: {
       local: util.format('/etc/%s', name),
       system: util.format('/etc/%s', name),
-      user: util.format('/home/%s/.config/%s', username, name)
+      user: util.format('/Users/%s/.config/%s', username, name)
     },
-    home: util.format('/home/%s', username),
+    home: util.format('/Users/%s', username),
     lib: {
       local: '/usr/lib',
       system: '/lib',
@@ -31,6 +32,6 @@ module.exports = name => {
       system: util.format('/var/%s/log', name),
       user: util.format('/var/opt/%s/log', name)
     },
-    temp: util.format('/tmp/%s', name)
+    temp: path.join(require('os').tmpdir(), name)
   }
 }
