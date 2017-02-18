@@ -1,11 +1,11 @@
 const memfs = require('memfs')
-const os = require('os')
+const userinfo = require('common-userinfo')
 
-const username = os.userInfo().username
+const username = userinfo.username
 const volume = new memfs.Volume()
 
 const vfs = {
-  [os.homedir()]: undefined,
+  [userinfo.homedir]: undefined,
   '/bin': undefined,
   '/etc': undefined,
   '/opt': undefined,

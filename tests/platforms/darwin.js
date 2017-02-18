@@ -1,7 +1,7 @@
-const os = require('os')
+const userinfo = require('common-userinfo')
 const util = require('util')
 
-const username = os.userInfo().username
+const username = userinfo.username
 
 module.exports = name => {
   return {

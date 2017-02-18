@@ -1,13 +1,13 @@
 const memfs = require('memfs')
-const os = require('os')
 const process = require('process')
+const userinfo = require('common-userinfo')
 
 const env = process.env
-const username = os.userInfo().username
+const username = userinfo.username
 const volume = new memfs.Volume()
 
 const vfs = {
-  [os.homedir()]: undefined,
+  [userinfo.homedir]: undefined,
   [env.ALLUSERSPROFILE]: undefined,
   [env.APPDATA]: undefined,
   [env.LOCALAPPDATA]: undefined,
