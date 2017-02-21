@@ -2,18 +2,23 @@
   "author": "NativeCode Development <support@nativecode.com> (https://www.nativecode.com)",
   "description": "Library to retrieve common cross-platform locations.",
   "homepage": "https://github.com/nativecode-dev/common-locations",
-  "keywords": ["configuration", "locations", "paths", "settings"],
+  "keywords": [
+    "configuration",
+    "locations",
+    "paths",
+    "settings"
+  ],
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
   },
   "dependencies": {
-    "common-userinfo": "^1.0.3",
-    "debug": "^2.6.0",
+    "common-userinfo": "^1.0.5",
+    "debug": "^2.6.1",
     "merge": "^1.2.0"
   },
   "devDependencies": {
@@ -22,8 +27,8 @@
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
     "gulp-clean": "^0.3.2",
-    "gulp-configly": "^1.1.4",
-    "gulp-debug": "^3.0.0",
+    "gulp-configly": "^1.1.5",
+    "gulp-debug": "^3.1.0",
     "gulp-env": "^0.4.0",
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "^3.0.1",
