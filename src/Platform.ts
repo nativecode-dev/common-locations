@@ -16,7 +16,7 @@ export class Platform {
     this.appname = appname
 
     const filename = `${os.platform()}.json`
-    const filepath = path.join(process.cwd(), 'platforms', filename)
+    const filepath = path.join(__dirname, 'platforms', filename)
     const file = fs.readFileSync(filepath)
     this.platform = JSON.parse(file.toString())
     this.resolver = new PathResolver(this.appname)
