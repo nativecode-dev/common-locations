@@ -30,7 +30,7 @@
   },
   "sources": {
     "clean": ["lib/", "*.tgz"],
-    "json": ["src/**/*.json"],
+    "json": ["platforms/**/*.json"],
     "tests": ["tests/**/when_*.js"],
     "ts": ["src/**/*.ts"]
   }
