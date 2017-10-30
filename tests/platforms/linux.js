@@ -10,7 +10,7 @@ module.exports = name => {
       system: util.format('/opt/%s', name),
       user: util.format('/home/%s/%s', username, name)
     },
-    binaries: {
+    bin: {
       local: '/opt/local/bin',
       system: '/bin',
       user: '/usr/bin'
@@ -18,7 +18,7 @@ module.exports = name => {
     config: {
       local: util.format('/etc/%s', name),
       system: util.format('/etc/%s', name),
-      user: util.format('/home/%s/.config/%s', username, name)
+      user: util.format('/home/%s/%s', username, name)
     },
     home: util.format('/home/%s', username),
     lib: {

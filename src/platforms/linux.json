@@ -1,0 +1,27 @@
+{
+  "app": {
+    "local": "/opt/{{appname}}",
+    "system": "/opt/{{appname}}",
+    "user": "~/{{appname}}"
+  },
+  "bin": {
+    "local": "/opt/local/bin",
+    "system": "/bin",
+    "user": "/usr/bin"
+  },
+  "config": {
+    "local": "/etc/{{appname}}",
+    "system": "/etc/{{appname}}",
+    "user": "~/{{appname}}"
+  },
+  "lib": {
+    "local": "/usr/lib",
+    "system": "/lib",
+    "user": "/usr/lib"
+  },
+  "log": {
+    "local": "/var/local/{{appname}}/log",
+    "system": "/var/{{appname}}/log",
+    "user": "/var/opt/{{appname}}/log"
+  }
+}

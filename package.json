@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "name": "common-locations",
-  "version": "2.4.0",
+  "version": "3.0.0",
   "bugs": {
     "email": "support@nativecode.com",
     "url": "https://github.com/nativecode-dev/common-locations/issues"
@@ -22,6 +22,7 @@
     "merge": "^1.2.0"
   },
   "devDependencies": {
+    "@types/node": "^8.0.47",
     "babel-preset-es2015": "^6.22.0",
     "chai": "^3.5.0",
     "gulp": "^3.9.1",
@@ -33,8 +34,14 @@
     "gulp-load-plugins": "^1.5.0",
     "gulp-mocha": "^3.0.1",
     "gulp-mustache": "^2.3.0",
+    "gulp-tslint": "^8.1.2",
+    "gulp-typescript": "^3.2.3",
     "memfs": "0.0.15",
-    "mocha": "^3.2.0"
+    "mocha": "^3.2.0",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.8.0",
+    "tslint-config-standard": "^7.0.0",
+    "typescript": "^2.5.3"
   },
   "engines": {
     "node": ">= 4.0.0"
@@ -49,8 +56,8 @@
   "scripts": {
     "build": "gulp build",
     "clean": "gulp clean",
-    "prepublish": "gulp clean && gulp test",
+    "test": "gulp test",
     "pretest": "gulp clean",
-    "test": "gulp test"
+    "start": "ts-node src/index.ts"
   }
 }
