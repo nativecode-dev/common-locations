@@ -10,7 +10,7 @@ module.exports = name => {
       system: util.format('C:\\ProgramData\\%s', name),
       user: util.format('C:\\Users\\%s\\AppData\\Roaming\\%s', username, name)
     },
-    binaries: {
+    bin: {
       local: util.format('C:\\Users\\%s\\AppData\\Local\\%s\\bin', username, name),
       system: util.format('C:\\ProgramData\\%s\\bin', name),
       user: util.format('C:\\Users\\%s\\AppData\\Roaming\\%s\\bin', username, name)

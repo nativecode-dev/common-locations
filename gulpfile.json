@@ -1,10 +1,10 @@
 {
   "debug": {
-    "js": {
-      "title": "js"
-    },
     "json": {
       "title": "json"
+    },
+    "ts": {
+      "title": "ts"
     }
   },
   "destination": {
@@ -30,8 +30,8 @@
   },
   "sources": {
     "clean": ["lib/", "*.tgz"],
-    "js": ["src/**/*.js"],
-    "json": ["src/**/*.json"],
-    "tests": ["tests/**/when_*.js"]
+    "json": ["platforms/**/*.json"],
+    "tests": ["tests/**/when_*.js"],
+    "ts": ["src/**/*.ts"]
   }
 }

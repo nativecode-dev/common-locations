@@ -7,11 +7,11 @@ const username = userinfo.username
 module.exports = name => {
   return {
     app: {
-      local: util.format('/opt/%s', name),
-      system: util.format('/opt/%s', name),
-      user: util.format('/Users/%s/%s', username, name)
+      local: util.format('/Applications/%s.app', name),
+      system: util.format('/Applications/%s.app', name),
+      user: util.format('/Users/%s/Applications/%s.app', username, name)
     },
-    binaries: {
+    bin: {
       local: '/opt/local/bin',
       system: '/bin',
       user: '/usr/bin'
@@ -19,7 +19,7 @@ module.exports = name => {
     config: {
       local: util.format('/etc/%s', name),
       system: util.format('/etc/%s', name),
-      user: util.format('/Users/%s/.config/%s', username, name)
+      user: util.format('/Users/%s/%s', username, name)
     },
     home: util.format('/Users/%s', username),
     lib: {

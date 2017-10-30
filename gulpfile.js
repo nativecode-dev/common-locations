@@ -9,25 +9,23 @@ const _package = fs.readFileSync('./package.json')
 const $ = JSON.parse(_config)
 $.package = JSON.parse(_package)
 
-gulp.task('build', ['build:js', 'build:json'])
+gulp.task('build', ['build:ts', 'build:json'])
 
-gulp.task('build:js', () => {
-  return gulp.src($.sources.js)
-    .pipe(plugins.debug($.debug.js))
-    .pipe(plugins.mustache($))
-    .pipe(plugins.babel($.plugins.babel))
+gulp.task('build:ts', ['clean'], () => {
+  return gulp.src($.sources.ts)
+    .pipe(plugins.debug($.debug.ts))
+    .pipe(plugins.typescript('tsconfig.json'))
     .pipe(gulp.dest($.destination.lib))
 })
 
-gulp.task('build:json', () => {
+gulp.task('build:json', ['clean'], () => {
   return gulp.src($.sources.json)
     .pipe(plugins.debug($.debug.json))
-    .pipe(plugins.mustache($))
-    .pipe(gulp.dest($.destination.lib))
+    .pipe(gulp.dest(`${$.destination.lib}/platforms`))
 })
 
 gulp.task('clean', () => {
-  return gulp.src($.sources.clean)
+  return gulp.src($.destination.lib)
     .pipe(plugins.debug())
     .pipe(plugins.clean())
 })

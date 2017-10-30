@@ -1,0 +1,27 @@
+{
+  "app": {
+    "local": "env:LOCALAPPDATA:{{appname}}",
+    "system": "env:ALLUSERSPROFILE:{{appname}}",
+    "user": "env:APPDATA:{{appname}}"
+  },
+  "bin": {
+    "local": "env:LOCALAPPDATA:{{appname}}\\bin",
+    "system": "env:ALLUSERSPROFILE:{{appname}}\\bin",
+    "user": "env:APPDATA:{{appname}}\\bin"
+  },
+  "config": {
+    "local": "env:LOCALAPPDATA:{{appname}}\\config",
+    "system": "env:ALLUSERSPROFILE:{{appname}}\\config",
+    "user": "env:APPDATA:{{appname}}\\config"
+  },
+  "lib": {
+    "local": "env:LOCALAPPDATA:{{appname}}\\lib",
+    "system": "env:ALLUSERSPROFILE:{{appname}}\\lib",
+    "user": "env:APPDATA:{{appname}}\\lib"
+  },
+  "log": {
+    "local": "env:LOCALAPPDATA:{{appname}}\\logs",
+    "system": "env:ALLUSERSPROFILE:{{appname}}\\logs",
+    "user": "env:APPDATA:{{appname}}\\logs"
+  }
+}
