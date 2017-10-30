@@ -19,7 +19,8 @@ export class Platform {
     const filepath = path.join(process.cwd(), 'platforms', filename)
     const file = fs.readFileSync(filepath)
     this.platform = JSON.parse(file.toString())
-    this.resolve(new PathResolver(this.appname))
+    this.resolver = new PathResolver(this.appname)
+    this.configure()
   }
 
   public get app(): PlatformLocation {
@@ -42,12 +43,13 @@ export class Platform {
     return new PlatformLocation(this.platform.log)
   }
 
-  private resolve(resolver: PathResolver): void {
-    Object.keys(this.platform)
-      .map(key => this.platform[key])
-      .forEach(location => {
-        Object.keys(location)
-          .forEach(key => location[key] = resolver.resolve(location[key]))
-      })
+  public resolve(path: string): string {
+    return this.resolver.resolve(path)
+  }
+
+  private configure(): void {
+    Object.keys(this.platform).map(key => this.platform[key]).forEach(location => {
+      Object.keys(location).forEach(key => location[key] = this.resolver.resolve(location[key]))
+    })
   }
 }
