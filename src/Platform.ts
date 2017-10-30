@@ -5,8 +5,9 @@ import * as path from 'path'
 import { PathResolver } from './PathResolver'
 import { PlatformConfig, PlatformConfigProperties } from './PlatformConfig'
 import { PlatformConfigLocation } from './PlatformConfigLocation'
+import { PlatformLocation } from './PlatformLocation'
 
-export class Platform implements PlatformConfigProperties {
+export class Platform {
   private readonly appname: string
   private readonly platform: PlatformConfig
   private readonly resolver: PathResolver
@@ -21,24 +22,24 @@ export class Platform implements PlatformConfigProperties {
     this.resolve(new PathResolver(this.appname))
   }
 
-  public get app(): PlatformConfigLocation {
-    return this.platform.app
+  public get app(): PlatformLocation {
+    return new PlatformLocation(this.platform.app)
   }
 
-  public get bin(): PlatformConfigLocation {
-    return this.platform.bin
+  public get bin(): PlatformLocation {
+    return new PlatformLocation(this.platform.bin)
   }
 
-  public get config(): PlatformConfigLocation {
-    return this.platform.config
+  public get config(): PlatformLocation {
+    return new PlatformLocation(this.platform.config)
   }
 
-  public get lib(): PlatformConfigLocation {
-    return this.platform.lib
+  public get lib(): PlatformLocation {
+    return new PlatformLocation(this.platform.lib)
   }
 
-  public get log(): PlatformConfigLocation {
-    return this.platform.log
+  public get log(): PlatformLocation {
+    return new PlatformLocation(this.platform.log)
   }
 
   private resolve(resolver: PathResolver): void {
